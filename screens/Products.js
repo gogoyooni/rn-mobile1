@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   },
   productPrice: {
     marginTop: 4,
-    fontsize: 14,
+    fontSize: 14,
     color: "#666",
   }
 });

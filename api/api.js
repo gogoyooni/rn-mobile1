@@ -11,9 +11,10 @@ export async function fetchProducts() {
             throw new Error('Failed to fetch products');
         }
 
-        console.log("data: ", response);
+        // console.log("data: ", response);
         return await response.json();
     } catch (error) {
+        console.error('Error fetching products', error);
         return [];
     }
 }
@@ -28,7 +29,7 @@ export async function fetchProductDetails(productId) {
             throw new Error('Failed to fetch product details');
         } 
 
-        console.log("data: ", response);
+        // console.log("data: ", response);
         return await response.json();
     } catch (error) {
         console.error('Error fetching product details', error);

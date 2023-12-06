@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StyleSheet } from "react-native";
@@ -24,7 +24,7 @@ const ProductDetails = ({ route }) => {
       const productData = await fetchProductDetails(id);
       console.log("productData: ", productData);
       setProduct(productData);
-    //   updateProductQuantity();
+      //   updateProductQuantity();
     } catch (error) {
       console.error("Error fetching product details:", error);
     }
@@ -33,37 +33,27 @@ const ProductDetails = ({ route }) => {
   const updateProductQuantity = () => {
     const result = products?.filter((p) => p.id === product?.id);
     if (result.length > 0) {
-        console.log("result[0]", result[0])
+      console.log("result[0]", result[0]);
       setCount(result[0].quantity);
     } else {
       setCount(0);
     }
   };
 
-
   useLayoutEffect(() => {
     fetchProduct();
-
-    console.log("나오는데")
-    console.log("id:", id)
-   
   }, []);
-
 
   useEffect(() => {
     updateProductQuantity();
-
   }, [products, product]);
 
-
-
-  console.log("count:", count)
-  console.log("products", products)
+  console.log("products", products);
 
   return (
     <SafeAreaView style={styles.container}>
       {product && (
-        <>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <Image style={styles.productImage} source={{ uri: product.image }} />
           <Text style={styles.productName}>{product.title}</Text>
           <Text style={styles.productCategory}>{product.category}</Text>
@@ -90,7 +80,7 @@ const ProductDetails = ({ route }) => {
               />
             </TouchableOpacity>
           </View>
-        </>
+        </ScrollView>
       )}
     </SafeAreaView>
   );
@@ -110,12 +100,12 @@ const styles = StyleSheet.create({
   },
   productCategory: {
     marginTop: 5,
-    fontsize: 16,
+    fontSize: 16,
     color: "#666",
   },
   productDescription: {
     marginTop: 10,
-    fontsize: 14,
+    fontSize: 14,
     color: "#666",
   },
   productName: {

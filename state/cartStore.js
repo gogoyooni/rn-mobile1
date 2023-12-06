@@ -6,7 +6,7 @@ const useCartStore = create((set) => ({
   addProduct: (product) =>
     set((state) => {
       const hasProduct = state.products.find((p) => p.id === product.id);
-      state.total += +product.product_price;
+      state.total += +product.price;
 
       if (hasProduct) {
         return {
@@ -25,7 +25,7 @@ const useCartStore = create((set) => ({
     }),
   reduceProduct: (product) =>
     set((state) => {
-      state.total -= +product.product_price;
+      state.total -= +product.price;
       return {
         products: state.products
           .map((p) => {
