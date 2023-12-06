@@ -34,7 +34,7 @@ const CartModal = () => {
 
   const onSubmitOrder = async () => {
     setSubmitting(true);
-    // Keyboard.dismiss();
+    Keyboard.dismiss();
     try {
       const response = {
           email,
